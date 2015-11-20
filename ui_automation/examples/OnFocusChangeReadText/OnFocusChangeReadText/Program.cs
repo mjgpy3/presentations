@@ -18,13 +18,15 @@ namespace OnFocusChangeReadText
             );
 
             Console.ReadLine();
+
+            Automation.RemoveAllEventHandlers();
         }
 
         private static void ListenToEditElement(object sender, AutomationFocusChangedEventArgs e)
         {
             var element = (AutomationElement) sender;
 
-            if (element.Current.ControlType == ControlType.Edit && IsNewElement(element))
+            if (element.Current.ControlType == ControlType.Edit && DiffersFromLastElement(element))
             {
                 if (HandlerExists())
                 {
@@ -50,7 +52,7 @@ namespace OnFocusChangeReadText
             Console.WriteLine(element.GetText());
         }
 
-        private static bool IsNewElement(AutomationElement element)
+        private static bool DiffersFromLastElement(AutomationElement element)
         {
             return _lastElement != element;
         }
