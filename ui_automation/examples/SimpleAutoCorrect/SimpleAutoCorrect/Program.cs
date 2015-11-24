@@ -28,6 +28,7 @@ namespace SimpleAutoCorrect
                 TreeScope.Element,
                 AutoCorrect
             );
+
             Console.ReadLine();
         }
 
