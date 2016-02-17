@@ -1,10 +1,163 @@
 # Intro to Functional Programming Using JS
 Michael Gilliland | 2016
+---
+
+# Format
+
+![Contrived Problem -> "Familiar" Solution -> FP Concept -> OOP Relevance](static/images/FP_Talk_Format.png)
 
 ---
 
-# Hmm 1
+# Multiples of 3 and 5
+
+> If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+>
+> Find the sum of all the multiples of 3 or 5 below 1000.
+
+<br /><br /><br /><br />
+
+From [Project Euler, problem 1](https://projecteuler.net/problem=1)
 
 ---
 
-# Hmm 2
+# Familiar solution
+
+```javascript
+var result = 0;
+
+for (var i = 1; i < 1000; i += 1) {
+
+  if (i % 5 === 0 || i % 3 === 0) {
+    result += i;
+  }
+
+}
+
+console.log(result); // => 233168
+```
+
+---
+
+# Pros and cons?
+
+```javascript
+var result = 0;
+
+for (var i = 1; i < 1000; i += 1) {
+
+  if (i % 5 === 0 || i % 3 === 0) {
+    result += i;
+  }
+
+}
+
+console.log(result); // => 233168
+```
+
+---
+
+# Data transformation (pipelines) over state
+
+```javascript
+var range = require('lodash').range;
+
+var result =
+  range(0, 1000)
+  .filter(function (value) {
+    return value % 3 === 0 || value % 5 === 0;
+  })
+  .reduce(function (sum, value) {
+    return sum + value;
+  });
+
+console.log(result); // => 233168
+```
+---
+
+# Pros and cons?
+
+```javascript
+var range = require('lodash').range;
+
+var result =
+  range(0, 1000)
+  .filter(function (value) {
+    return value % 3 === 0 || value % 5 === 0;
+  })
+  .reduce(function (sum, value) {
+    return sum + value;
+  });
+
+console.log(result); // => 233168
+```
+
+---
+
+# Currying and high-order functions
+
+```javascript
+var lodash = require('lodash'),
+  range = lodash.range,
+  add = lodash.add;
+
+var result =
+  range(0, 1000)
+  .filter(either(divisibleBy(3), divisibleBy(5)))
+  .reduce(add);
+
+function divisibleBy(divisor) {
+  return function (quot) {
+    return quot % divisor === 0;
+  };
+}
+
+function either(f, g) {
+  return function (x) {
+    return f(x) || g(x);
+  };
+}
+
+console.log(result); // => 233168
+```
+---
+
+# Pros and cons?
+
+```javascript
+var lodash = require('lodash'),
+  range = lodash.range,
+  add = lodash.add;
+
+var result =
+  range(0, 1000)
+  .filter(either(divisibleBy(3), divisibleBy(5)))
+  .reduce(add);
+
+function divisibleBy(divisor) {
+  return function (quot) {
+    return quot % divisor === 0;
+  };
+}
+
+function either(f, g) {
+  return function (x) {
+    return f(x) || g(x);
+  };
+}
+
+console.log(result); // => 233168
+```
+
+---
+
+# OOP relevance
+
+## Pipeline chaining
+ - `map`, `filter`, `reduce`, `scan` and relatives are (almost) everywhere now
+
+## Currying
+ - Looks like the "builder" pattern and/or fluent setters
+
+## High-order functions
+ - Also (almost) everywhere.
+   - If you don't have them, small interfaces can do the trick
