@@ -182,6 +182,51 @@ console.log(totalRepairCostIn(tracker, 'living-room')); // => 20
 console.log(totalRepairCostIn(tracker, 'bathroom')); // => 0
 ```
 
+---
+
+# Immutability (persistence) and recursion
+
+```javascript
+var tracker = null;
+
+function trackRepair(ledger, roomName, amount) {
+  return {
+    roomName: roomName,
+    amount: amount,
+    previousEntry: ledger
+  };
+}
+
+function totalRepairCostIn(ledger, roomName) {
+  if (ledger === null) {
+    return 0;
+  }
+
+  var amount = ledger.roomName === roomName ? ledger.amount : 0;
+
+  return amount + totalRepairCostIn(ledger.previousEntry, roomName);
+}
+
+var t1 = trackRepair(tracker, 'man-cave', 1000);
+var t2 = trackRepair(t1, 'man-cave', 50);
+var t3 = trackRepair(t2, 'living-room', 20);
+
+console.log(totalRepairCostIn(t3, 'man-cave')); // => 1050
+console.log(totalRepairCostIn(t3, 'living-room')); // => 20
+console.log(totalRepairCostIn(t3, 'bathroom')); // => 0
+```
+
+---
+
+# OOP relevance
+
+## Immutability
+ - Requires rigor and discipline
+ - There are some libraries that can provide it
+
+## Recursion
+ - OOP generally has a poor recursion story
+
 
 
 
