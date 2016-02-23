@@ -227,6 +227,34 @@ console.log(totalRepairCostIn(t3, 'bathroom')); // => 0
 ## Recursion
  - OOP generally has a poor recursion story
 
+---
+
+# Contrived problem 3: Ancestry tree
+
+> Model an ancestry tree where each person has a name and, perhaps, parents
+
+---
+
+# Familiar solution
+
+Father
+```javascript
+var dad = {
+  name: 'Roger',
+  father: null,
+  mother: null
+};
+```
+
+Son
+```javascript
+var jim = {
+  name: 'Jimmy',
+  father: dad,
+  mother: null
+};
+```
+
 
 
 
