@@ -2,8 +2,7 @@
 Michael Gilliland | 2016
 ---
 
-# Format
-
+# Format 
 ![Contrived Problem -> "Familiar" Solution -> FP Concept -> OOP Relevance](static/images/FP_Talk_Format.png)
 
 (N Problems)
@@ -226,7 +225,7 @@ path(grierTaylor, ['father', 'mother', 'father'])
 
 ---
 
-# Familiar solution
+# Familiar solution (data)
 
 Father
 ```javascript
@@ -243,5 +242,67 @@ var jim = {
   name: 'Jimmy',
   father: dad,
   mother: null
+};
+```
+
+---
+
+# Familiar solution (`parents`)
+
+```javascript
+function parents(person) {
+  var results = [];
+
+  if (person.father !== null) {
+    results.push(person.father);
+  }
+  if (person.mother !== null) {
+    results.push(person.mother);
+  }
+
+  return results;
+}
+```
+
+---
+
+# Familiar solution (`grandparents`)
+
+```javascript
+function grandparents(person, nGreat) {
+  var currentLevel = parents(person),
+    nextLevel;
+
+  for (; nGreat !== -1; nGreat--) {
+    nextLevel = [];
+
+    for (var i = 0; i < currentLevel.length; i++) {
+      var parents = parents(currentLevel[i]);
+
+      nextLevel = nextLevel.concat(parents);
+    }
+
+    currentLevel = nextLevel;
+  }
+
+  return nextLevel;
+}
+```
+
+---
+
+# Familiar solution (`path`)
+
+```javascript
+function path(person, selectors) {
+  for (var i = 0; i < selectors.length; i += 1) {
+    if (person === null || person[selectors[i]] === null) {
+      return null;
+    }
+
+    person = person[selectors[i]];
+  }
+
+  return person;
 };
 ```
