@@ -54,7 +54,7 @@ Michael Gilliland | 2016
 # Format 
 ![Contrived Problem -> "Familiar" Solution -> FP Concept -> OOP Relevance](static/images/FP_Talk_Format.png)
 
-(N Problems)
+(3 Problems)
 ---
 
 # Contrived problem 1: Multiples of 3 and 5
@@ -74,10 +74,10 @@ From [Project Euler, problem 1](https://projecteuler.net/problem=1)
 ```javascript
 var result = 0;
 
-for (var i = 1; i < 1000; i += 1) {
+for (var value = 1; value < 1000; value += 1) {
 
-  if (i % 5 === 0 || i % 3 === 0) {
-    result += i;
+  if (value % 5 === 0 || value % 3 === 0) {
+    result += value;
   }
 
 }
@@ -355,6 +355,170 @@ function path(person, selectors) {
   return person;
 };
 ```
+
+---
+
+# Familiar solution (`path`)
+
+```javascript
+function path(person, selectors) {
+  for (var i = 0; i < selectors.length; i += 1) {
+    if (person === null || person[selectors[i]] === null) {
+      return null;
+    }
+
+    person = person[selectors[i]];
+  }
+
+  return person;
+};
+```
+
+---
+
+# FP: Optional
+
+```javascript
+function Just(v) {
+  // ...
+}
+
+function Nothing() {
+  // ...
+}
+```
+
+---
+
+# FP: _Monoidal_ _Optional_ (append-able)
+
+```javascript
+function Just(v) {
+
+  this.asList = [v];
+}
+
+function Nothing() {
+
+  this.asList = [];
+}
+```
+
+Just use `.concat`, and `[]` is the (clearly) empty value
+
+---
+
+# FP: _Bind_ Array
+
+```javascript
+function concatMap(f, items) {
+  return _.flatten(
+    _.map(items, f)
+  );
+}
+```
+
+---
+
+# FP: _Bind_ _Optional_
+
+```javascript
+function Just(v) {
+  this.thenDo = function (f) {
+    return f(v);
+  };
+
+  this.asList = [v];
+}
+
+function Nothing() {
+  this.thenDo = function (_) {
+    return new Nothing();
+  };
+
+  this.asList = [];
+}
+```
+
+---
+
+# FP: Data
+
+```javascript
+var dad = {
+  name: 'Roger',
+  father: new Nothing(),
+  mother: new Nothing()
+};
+
+var jim = {
+  name: 'Jimmy',
+  father: new Just(dad),
+  mother: new Nothing()
+};
+```
+
+---
+
+# FP: `parents` using the _Monoid_
+
+```javascript
+function parents(person) {
+  return person.father.asList.concat(
+    person.mother.asList
+  );
+}
+```
+
+---
+
+# FP: `grandparents` using Array _Bind_, recursion and currying
+
+```javascript
+function grandparents(person, nGreat) {
+  if (nGreat === -2) {
+    return person;
+  }
+
+  return concatMap(
+    nBackGrandparent(nGreat - 1),
+    parents(person)
+  );
+}
+
+function nBackGrandparent(n) {
+  return function (person) {
+    return grandparents(person, n);
+  };
+}
+```
+
+---
+
+# FP: `path` using _Optional_ _Bind_ and recursion
+
+```javascript
+function path(person, selectors) {
+  if (selectors.length === 0) {
+    return new Just(person);
+  }
+
+  return person[selectors[0]].thenDo(function (parent) {
+    return path(parent, _.drop(selectors, 1));
+  });
+}
+```
+
+---
+
+# Common themes
+## Expressions **over** statements
+
+## Recursion and nesting structures **over** mutation
+
+## Patterns as functions **over** `if` checks
+
+## Declarative (what) **over** imperative (how)
 
 
 
