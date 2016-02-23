@@ -162,8 +162,6 @@ Expected APIs
 # Familiar solution
 
 ```javascript
-var tracker = {};
-
 function trackRepair(expenseTracker, roomName, amount) {
   expenseTracker[roomName] =
     (expenseTracker[roomName] || 0) + amount;
@@ -172,6 +170,10 @@ function trackRepair(expenseTracker, roomName, amount) {
 function totalRepairCostIn(expenseTracker, roomName) {
   return expenseTracker[roomName] || 0;
 }
+
+// Usage
+
+var tracker = {};
 
 trackRepair(tracker, 'man-cave', 1000);
 trackRepair(tracker, 'man-cave', 50);
@@ -232,6 +234,10 @@ console.log(totalRepairCostIn(t3, 'bathroom')); // => 0
 # Contrived problem 3: Ancestry tree
 
 > Model an ancestry tree where each person has a name and, perhaps, parents
+
+Expected APIs
+ - `ancestorsUp(n)`
+ - `path(parentSpecifiers)`
 
 ---
 
