@@ -193,6 +193,39 @@ Expected APIs
 
 ---
 
+# Ancestry tree (cont...)
+
+```javascript
+parents(grierTaylor)
+// => [johnBald, agustaMarie]
+```
+<img src=static/images/Ancestry.jpg style="max-width: 100%;">
+</img>
+
+---
+
+# Ancestry tree (cont...)
+
+```javascript
+grandparents(grierTaylor, 1)
+// => [jamesG, helen, jamesB, margaretE, smith, robert, margaretDoe]
+```
+<img src=static/images/Ancestry.jpg style="max-width: 100%;">
+</img>
+
+---
+
+# Ancestry tree (cont...)
+
+```javascript
+path(grierTaylor, ['father', 'mother', 'father'])
+// => jamesB
+```
+<img src=static/images/Ancestry.jpg style="max-width: 100%;">
+</img>
+
+---
+
 # Familiar solution
 
 Father

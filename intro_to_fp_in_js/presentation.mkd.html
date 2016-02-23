@@ -236,8 +236,42 @@ console.log(totalRepairCostIn(t3, 'bathroom')); // => 0
 > Model an ancestry tree where each person has a name and, perhaps, parents
 
 Expected APIs
- - `ancestorsUp(n)`
- - `path(parentSpecifiers)`
+ - `parents(person)`
+ - `grandparents(person, nGreat)`
+ - `path(person, parentSpecifiers)`
+
+---
+
+# Ancestry tree (cont...)
+
+```javascript
+parents(grierTaylor)
+// => [johnBald, agustaMarie]
+```
+<img src=static/images/Ancestry.jpg style="max-width: 100%;">
+</img>
+
+---
+
+# Ancestry tree (cont...)
+
+```javascript
+grandparents(grierTaylor, 1)
+// => [jamesG, helen, jamesB, margaretE, smith, robert, margaretDoe]
+```
+<img src=static/images/Ancestry.jpg style="max-width: 100%;">
+</img>
+
+---
+
+# Ancestry tree (cont...)
+
+```javascript
+path(grierTaylor, ['father', 'mother', 'father'])
+// => jamesB
+```
+<img src=static/images/Ancestry.jpg style="max-width: 100%;">
+</img>
 
 ---
 
