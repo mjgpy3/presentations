@@ -358,24 +358,6 @@ function path(person, selectors) {
 
 ---
 
-# Familiar solution (`path`)
-
-```javascript
-function path(person, selectors) {
-  for (var i = 0; i < selectors.length; i += 1) {
-    if (person === null || person[selectors[i]] === null) {
-      return null;
-    }
-
-    person = person[selectors[i]];
-  }
-
-  return person;
-};
-```
-
----
-
 # FP: Optional
 
 ```javascript
@@ -512,13 +494,15 @@ function path(person, selectors) {
 ---
 
 # Common themes
-## Expressions **over** statements
+### Expressions **over** statements
 
-## Recursion and nesting structures **over** mutation
+### Recursion and nesting structures **over** mutation
 
-## Patterns as functions **over** `if` checks
+### Patterns as functions **over** `if` checks
 
-## Declarative (what) **over** imperative (how)
+### Declarative (what) **over** imperative (how)
+
+### Making small details explicit
 
 
 
