@@ -380,7 +380,7 @@ function Nothing() {
 
 ---
 
-# FP: _Monoidal_ _Optional_ (append-able)
+# FP: _Monoid_ (append-able)
 
 ```javascript
 function Just(v) {
@@ -394,11 +394,12 @@ function Nothing() {
 }
 ```
 
-Just use `.concat`, and `[]` is the empty value
+ - `.concat` for appending
+ - `[]` for the empty value
 
 ---
 
-# FP: _Bind_ _Optional_
+# FP: _Bind_
 
 ```javascript
 function Just(v) {
