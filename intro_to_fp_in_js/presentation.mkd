@@ -345,7 +345,7 @@ function Nothing() {
 }
 ```
 
-Just use `.concat`, and `[]` is the (clearly) empty value
+Just use `.concat`, and `[]` is the empty value
 
 ---
 
