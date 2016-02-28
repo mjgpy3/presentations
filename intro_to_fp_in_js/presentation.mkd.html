@@ -294,7 +294,7 @@ var jim = {
 };
 ```
 
-[functional](#24)
+[functional](#25)
 
 ---
 
@@ -315,7 +315,7 @@ function parents(person) {
 }
 ```
 
-[functional](#25)
+[functional](#26)
 
 ---
 
@@ -342,7 +342,7 @@ function grandparents(person, nGreat) {
 }
 ```
 
-[functional](#26)
+[functional](#27)
 
 ---
 
@@ -362,7 +362,7 @@ function path(person, selectors) {
 };
 ```
 
-[functional](#27)
+[functional](#28)
 
 ---
 
@@ -394,23 +394,33 @@ function Nothing() {
 }
 ```
 
-Just use `.concat`, and `[]` is the (clearly) empty value
+Just use `.concat`, and `[]` is the empty value
 
 ---
 
-# FP: _Bind_ Array
+# FP: _Bind_ _Optional_
 
 ```javascript
-function concatMap(f, items) {
-  return _.flatten(
-    _.map(items, f)
-  );
+function Just(v) {
+  this.thenDo = function (f) {
+    return f(v);
+  };
+
+  // ...
+}
+
+function Nothing() {
+  this.thenDo = function (_) {
+    return new Nothing();
+  };
+
+  // ...
 }
 ```
 
 ---
 
-# FP: _Bind_ _Optional_
+# FP: Final _Optional_
 
 ```javascript
 function Just(v) {
@@ -427,6 +437,18 @@ function Nothing() {
   };
 
   this.asList = [];
+}
+```
+
+---
+
+# FP: _Bind_ Array
+
+```javascript
+function concatMap(f, items) {
+  return _.flatten(
+    _.map(items, f)
+  );
 }
 ```
 
