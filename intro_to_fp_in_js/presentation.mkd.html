@@ -48,7 +48,7 @@ class: center, middle
 
 
 # Intro to Functional Programming Using JavaScript
-Michael Gilliland | 2016
+Michael Gilliland
 ---
 
 # Format 
@@ -294,6 +294,8 @@ var jim = {
 };
 ```
 
+[functional](#24)
+
 ---
 
 # Familiar solution (`parents`)
@@ -312,6 +314,8 @@ function parents(person) {
   return results;
 }
 ```
+
+[functional](#25)
 
 ---
 
@@ -338,6 +342,8 @@ function grandparents(person, nGreat) {
 }
 ```
 
+[functional](#26)
+
 ---
 
 # Familiar solution (`path`)
@@ -355,6 +361,8 @@ function path(person, selectors) {
   return person;
 };
 ```
+
+[functional](#27)
 
 ---
 
@@ -440,9 +448,11 @@ var jim = {
 };
 ```
 
+[imperative](#16)
+
 ---
 
-# FP: `parents` using the _Monoid_
+# FP: `parents` using _Monoid_
 
 ```javascript
 function parents(person) {
@@ -451,6 +461,8 @@ function parents(person) {
   );
 }
 ```
+
+[imperative](#17)
 
 ---
 
@@ -475,6 +487,8 @@ function nBackGrandparent(n) {
 }
 ```
 
+[imperative](#18)
+
 ---
 
 # FP: `path` using _Optional_ _Bind_ and recursion
@@ -490,6 +504,18 @@ function path(person, selectors) {
   });
 }
 ```
+
+[imperative](#19)
+
+---
+ 
+# OOP relevance
+
+## Optionals
+ - Many languages have them, but it's easy to roll your own
+
+## Bind, Monoid
+ - Just interfaces
 
 ---
 
