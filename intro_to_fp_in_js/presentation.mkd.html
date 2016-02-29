@@ -93,7 +93,7 @@ console.log(result); // => 233168
 var range = require('lodash').range;
 
 var result =
-  range(0, 1000)
+  range(1, 1000)
   .filter(function (value) {
     return value % 3 === 0 || value % 5 === 0;
   })
@@ -113,7 +113,7 @@ var lodash = require('lodash'),
   add = lodash.add;
 
 var result =
-  range(0, 1000)
+  range(1, 1000)
   .filter(either(divisibleBy(3), divisibleBy(5)))
   .reduce(add);
 
@@ -188,8 +188,6 @@ console.log(totalRepairCostIn(tracker, 'bathroom')); // => 0
 # Immutability (persistence) and recursion
 
 ```javascript
-var tracker = null;
-
 function trackRepair(ledger, roomName, amount) {
   return {
     roomName: roomName,
@@ -207,6 +205,8 @@ function totalRepairCostIn(ledger, roomName) {
 
   return amount + totalRepairCostIn(ledger.previousEntry, roomName);
 }
+
+var tracker = null;
 
 var t1 = trackRepair(tracker, 'man-cave', 1000);
 var t2 = trackRepair(t1, 'man-cave', 50);
@@ -545,6 +545,12 @@ function path(person, selectors) {
 ### Declarative (what) **over** imperative (how)
 
 ### Making small details explicit
+
+---
+
+# Obligatory questions slide
+
+## Questions?
 
 
 
