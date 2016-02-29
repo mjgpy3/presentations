@@ -397,11 +397,9 @@ function Nothing() {
 # FP: _Bind_ Array
 
 ```javascript
-function concatMap(f, items) {
-  return _.flatten(
-    _.map(items, f)
-  );
-}
+Array.prototype.thenDo = function (f) {
+  return _.flatten(this.map(f));
+};
 ```
 
 ---
@@ -448,16 +446,10 @@ function grandparents(person, nGreat) {
     return person;
   }
 
-  return concatMap(
-    nBackGrandparent(nGreat - 1),
-    parents(person)
-  );
-}
-
-function nBackGrandparent(n) {
-  return function (person) {
-    return grandparents(person, n);
-  };
+  return parents(person)
+    .thenDo(function (person) {
+      return grandparents(person, nGreat-1);
+    });
 }
 ```
 
@@ -473,9 +465,10 @@ function path(person, selectors) {
     return new Just(person);
   }
 
-  return person[selectors[0]].thenDo(function (parent) {
-    return path(parent, _.drop(selectors, 1));
-  });
+  return person[selectors[0]]
+    .thenDo(function (parent) {
+      return path(parent, _.drop(selectors, 1));
+    });
 }
 ```
 

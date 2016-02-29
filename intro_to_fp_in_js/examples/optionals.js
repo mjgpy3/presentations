@@ -52,6 +52,10 @@ function concatMap(f, items) {
   );
 }
 
+Array.prototype.thenDo = function (f) {
+  return _.flatten(this.map(f));
+};
+
 function parents(person) {
     return person.father.asList.concat(
       person.mother.asList
@@ -63,16 +67,10 @@ function grandparents(person, nGreat) {
     return person;
   }
 
-  return concatMap(
-    nBackGrandparent(nGreat - 1),
-    parents(person)
-  );
-}
-
-function nBackGrandparent(n) {
-  return function (person) {
-    return grandparents(person, n);
-  };
+  return parents(person)
+    .thenDo(function (person) {
+      return grandparents(person, nGreat-1);
+    });
 }
 
 function path(person, selectors) {
