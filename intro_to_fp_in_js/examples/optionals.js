@@ -57,9 +57,9 @@ Array.prototype.thenDo = function (f) {
 };
 
 function parents(person) {
-    return person.father.asList.concat(
-      person.mother.asList
-    );
+  return person.father.asList.concat(
+    person.mother.asList
+  );
 }
 
 function grandparents(person, nGreat) {
