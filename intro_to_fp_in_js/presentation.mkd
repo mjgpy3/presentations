@@ -1,4 +1,4 @@
-# Intro to Functional Programming Using JavaScript
+# Intro to Functional Programming (FP) Using JavaScript
 Michael Gilliland
 ---
 
@@ -438,7 +438,7 @@ function parents(person) {
 
 ---
 
-# FP: `grandparents` using Array _Bind_, recursion and currying
+# FP: `grandparents` using Array _Bind_ and recursion
 
 ```javascript
 function grandparents(person, nGreat) {
@@ -489,13 +489,15 @@ function path(person, selectors) {
 # Common themes
 ### Expressions **over** statements
 
-### Recursion and nesting structures **over** mutation
+### Nested (and new) structures **over** mutation
 
 ### Patterns as functions **over** `if` checks
 
+### Recursion **over** loops
+
 ### Declarative (what) **over** imperative (how)
 
-### Making small details explicit
+### Making small details explicit (with functions!)
 
 ---
 
