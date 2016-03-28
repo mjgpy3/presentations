@@ -48,10 +48,11 @@ class: center, middle
 
 
 # Intro to Functional Programming (FP) Using JavaScript
-Michael Gilliland
+Michael Gilliland (@mjgpy3) <br />
+[github.com/mjgpy3/presentations](https://github.com/mjgpy3/presentations)
 ---
 
-# Format 
+# Format
 ![Contrived Problem -> "Familiar" Solution -> FP Concept -> OOP Relevance](static/images/FP_Talk_Format.png)
 
 (3 Problems)
@@ -369,11 +370,11 @@ function path(person, selectors) {
 # FP: Optional
 
 ```javascript
-function Just(v) {
+function Some(v) {
   // ...
 }
 
-function Nothing() {
+function None() {
   // ...
 }
 ```
@@ -383,14 +384,14 @@ function Nothing() {
 # FP: _Monoid_ (append-able)
 
 ```javascript
-function Just(v) {
+function Some(v) {
 
-  this.asList = [v];
+  this.asAppendable = [v];
 }
 
-function Nothing() {
+function None() {
 
-  this.asList = [];
+  this.asAppendable = [];
 }
 ```
 
@@ -402,7 +403,7 @@ function Nothing() {
 # FP: _Bind_
 
 ```javascript
-function Just(v) {
+function Some(v) {
   this.thenDo = function (f) {
     return f(v);
   };
@@ -410,9 +411,9 @@ function Just(v) {
   // ...
 }
 
-function Nothing() {
+function None() {
   this.thenDo = function (_) {
-    return new Nothing();
+    return new None();
   };
 
   // ...
@@ -424,20 +425,20 @@ function Nothing() {
 # FP: Final _Optional_
 
 ```javascript
-function Just(v) {
+function Some(v) {
   this.thenDo = function (f) {
     return f(v);
   };
 
-  this.asList = [v];
+  this.asAppendable = [v];
 }
 
-function Nothing() {
+function None() {
   this.thenDo = function (_) {
-    return new Nothing();
+    return new None();
   };
 
-  this.asList = [];
+  this.asAppendable = [];
 }
 ```
 
@@ -458,14 +459,14 @@ Array.prototype.thenDo = function (f) {
 ```javascript
 var dad = {
   name: 'Roger',
-  father: new Nothing(),
-  mother: new Nothing()
+  father: new None(),
+  mother: new None()
 };
 
 var jim = {
   name: 'Jimmy',
-  father: new Just(dad),
-  mother: new Nothing()
+  father: new Some(dad),
+  mother: new None()
 };
 ```
 
@@ -477,8 +478,8 @@ var jim = {
 
 ```javascript
 function parents(person) {
-  return person.father.asList.concat(
-    person.mother.asList
+  return person.father.asAppendable.concat(
+    person.mother.asAppendable
   );
 }
 ```
@@ -511,7 +512,7 @@ function grandparents(person, nGreat) {
 ```javascript
 function path(person, selectors) {
   if (selectors.length === 0) {
-    return new Just(person);
+    return new Some(person);
   }
 
   return person[selectors[0]]
@@ -540,7 +541,7 @@ function path(person, selectors) {
 
 ### Nested (and new) structures **over** mutation
 
-### Patterns as functions **over** `if` checks
+### Patterns (just functions) **over** `if` checks
 
 ### Recursion **over** loops
 
