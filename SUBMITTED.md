@@ -18,18 +18,6 @@ In this beginner-level talk, Michael Gilliland will introduce some of the concep
 
 # Abstractions 2016
 
-## What's Your Source
-
-### Pitch
-Attendees will be introduced to a non-trivially powerful pattern: Event
-Sourcing. The benefits of (un)structuring data around users actions,
-rather than arbitrary relationships, will be shown. Even Event Sourcing veterans
-will have plenty to learn about the Event Store Database at this talk.
-
-### Description
-Do frail data models make you itch? Has a client ever asked a question yielding the response, _alas dearest client, mine datastore lacketh the richness to generate thy report_? Well, Event Sourcing may be your knight in shining armor!
-
-Let's learn about this glorious pattern with examples using the [Event Store database](https://geteventstore.com/)!
 
 ### Bio
 A functional programming enthusiast who loves collaboratively solving hard problems, building cool things, testing and music.
