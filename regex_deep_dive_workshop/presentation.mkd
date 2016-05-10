@@ -1,0 +1,39 @@
+# Regular Expression Deep Dive
+Michael Gilliland (@mjgpy3) <br />
+[github.com/mjgpy3/presentations](https://github.com/mjgpy3/presentations)
+---
+# Agenda
+
+### What are regular expressions?
+
+### What about in language X?
+
+### When should they be used?
+
+### Workshop
+---
+# What are regular expressions?
+
+<img src="https://upload.wikimedia.org/wikipedia/en/b/b9/MagrittePipe.jpg" style="max-width: 100%;">
+</img>
+---
+# Definition
+
+> a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching
+
+ ~ Wikipedia
+---
+# The anatomy of a regular expression
+
+<img src="static/images/regex_anatomy.png" style="max-width: 100%;">
+</img>
+---
+# The anatomy of a regular expression
+
+<img src="static/images/regex_anatomy_2.png" style="max-width: 100%;">
+</img>
+---
+# The anatomy of a regular expression
+
+<img src="static/images/regex_anatomy_3.png" style="max-width: 100%;">
+</img>
