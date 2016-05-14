@@ -47,3 +47,37 @@ Michael Gilliland (@mjgpy3) <br />
 
 <img src="http://m.cdn.blog.hu/eo/eotvoskollegium/image/0mcbgopp8cvvlnxxsx.jpg" style="max-width: 100%;">
 </img>
+
+---
+# Java
+```java
+import java.util.regex.*;
+
+// ...
+
+Pattern pattern = Pattern.compile("some pattern", SOME_FLAGS);
+
+Matcher matcher = pattern.matcher("some text to match against");
+
+// ...
+```
+
+---
+# C Sharp
+```c#
+using System.Text.RegularExpressions;
+
+// ...
+
+Regex regex = new Regex(@"some regex pattern", RegexOptions.SomeOption);
+
+Match match = regex.Match("some text to match against");
+
+// ...
+```
+
+---
+# JavaScript
+```javascript
+'some text to match'.match(/pattern/)
+```
