@@ -89,12 +89,19 @@ Match match = regex.Match("some text to match against");
 </img>
 
 ---
-# Cop-out
+# Generally, when you need to...
 
-You really should use your best judgement...
+ - validate the form of text
+ - find
+ - find and replace
 
 ---
-# Cop-out
+# Don't use them when...
+
+ - you need to parse/validate complicated text (e.g. a programming language, HTML)
+
+---
+# Cop-out of specific answer
 
 You really should use your best judgement...
 
@@ -145,3 +152,14 @@ function looksLikeMD5Sum(value) {
   return value.match(md5Pattern);
 }
 ```
+
+---
+# Workshop
+
+<img src="http://www.murraymitchell.com/wp-content/uploads/2013/11/a_road_in_the_desert_covered_by_sand.jpg" style="max-width: 100%;">
+</img>
+
+---
+# If you'd like to follow along...
+
+[regex101.com](https://regex101.com/)
