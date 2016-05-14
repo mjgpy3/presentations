@@ -139,7 +139,7 @@ function looksLikeMD5Sum(value) {
 # With RegEx
 
 ```javascript
-var md5Pattern = /[a-f0-9]{32}/;
+var md5Pattern = /^[a-f0-9]{32}$/;
 
 function looksLikeMD5Sum(value) {
   return value.match(md5Pattern);

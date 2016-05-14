@@ -188,20 +188,10 @@ function looksLikeMD5Sum(value) {
 # With RegEx
 
 ```javascript
-var md5Characters = ['0', '1', ..., '9', 'a', 'b', ..., 'f'];
+var md5Pattern = /^[a-f0-9]{32}$/;
 
 function looksLikeMD5Sum(value) {
-  if (value.length !== 32) {
-    return false;
-  }
-
-  for (var i = 0; i < value.length; i += 1) {
-    if (md5Characters.indexOf(value[i]) === -1) {
-      return false;
-    }
-  }
-
-  return true;
+  return value.match(md5Pattern);
 }
 ```
 
