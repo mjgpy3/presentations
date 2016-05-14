@@ -131,6 +131,80 @@ Match match = regex.Match("some text to match against");
 'some text to match'.match(/pattern/)
 ```
 
+---
+# When should I use regular expressions?
+
+<img src="http://poshcommunication.com/wp-content/uploads/2015/03/confused-880735_1280-900x600.jpg" style="max-width: 100%;">
+</img>
+
+---
+# Cop-out
+
+You really should use your best judgement...
+
+---
+# Cop-out
+
+You really should use your best judgement...
+
+...But here's an example anyways
+
+---
+# What is this?
+
+d3b07384d113edec49eaa6238ad5ff00
+
+---
+# What is `value`?
+
+```javascript
+function looksLikeMD5Sum(value) {
+  // ...
+}
+```
+
+---
+# Without RegEx
+
+```javascript
+var md5Characters = ['0', '1', ..., '9', 'a', 'b', ..., 'f'];
+
+function looksLikeMD5Sum(value) {
+  if (value.length !== 32) {
+    return false;
+  }
+
+  for (var i = 0; i < value.length; i += 1) {
+    if (md5Characters.indexOf(value[i]) === -1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+```
+
+---
+# With RegEx
+
+```javascript
+var md5Characters = ['0', '1', ..., '9', 'a', 'b', ..., 'f'];
+
+function looksLikeMD5Sum(value) {
+  if (value.length !== 32) {
+    return false;
+  }
+
+  for (var i = 0; i < value.length; i += 1) {
+    if (md5Characters.indexOf(value[i]) === -1) {
+      return false;
+    }
+  }
+
+  return true;
+}
+```
+
 
 
 
