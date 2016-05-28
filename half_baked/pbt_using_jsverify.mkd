@@ -1,0 +1,34 @@
+# Presentation thoughts on PBT using JSVerify
+Not meant to be particularly insightful, interesting or even correct. Just a scratch pad.
+
+## Format
+### General
+ - Lots of pictures/memes
+ - Lots of case studies, examples, etc...
+
+### Agenda
+`What is PBT?` -> `When to use it` -> `When to not use it` -> `Examples`
+
+## What is PBT?
+ - Shotgun testing vs sniper rifle (imgs)
+ - Technical definition
+  - Explain predicates
+  - Explain types
+ - "Did you think about the value X?"
+
+## When to use it
+ - Should be "at the bottom of the pyramid"
+  - Perhaps even lower (in the functional sense)
+ - Prove higher-order properties
+ - Permutations
+ - When there are other testing mechanisms in place
+
+## When to not use it
+ - Defer pyramid
+
+## Examples
+ - Explain growing difficulty
+ - Using `node`
+  - Note other mediums, don't go to far into them
+ - Absolute value function
+ - Custom "generators"
