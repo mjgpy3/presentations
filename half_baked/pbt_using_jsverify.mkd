@@ -7,7 +7,7 @@ Not meant to be particularly insightful, interesting or even correct. Just a scr
  - Lots of case studies, examples, etc...
 
 ### Agenda
-`What is PBT?` -> `When to use it` -> `When to not use it` -> `Examples`
+`What is PBT?` -> `When to use it` -> `When to not use it` -> `A little about JSVerify` -> `Examples`
 
 ## What is PBT?
  - Shotgun testing vs sniper rifle (imgs)
@@ -15,6 +15,7 @@ Not meant to be particularly insightful, interesting or even correct. Just a scr
   - Explain predicates
   - Explain types
  - "Did you think about the value X?"
+ - Where does it come from
 
 ## When to use it
  - Should be "at the bottom of the pyramid"
@@ -25,6 +26,8 @@ Not meant to be particularly insightful, interesting or even correct. Just a scr
 
 ## When to not use it
  - Defer pyramid
+
+## A little about JSVerify
 
 ## Examples
  - Explain growing difficulty
