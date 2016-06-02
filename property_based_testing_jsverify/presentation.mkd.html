@@ -54,10 +54,10 @@ Michael Gilliland (@mjgpy3) <br />
 
 # Agenda
  - What is Property-Based Testing?
+ - Enter JSVerify
+ - Examples
  - When to use it?
  - When to not use it?
- - A little about JSVerify
- - Examples
 
 ---
 # What is Property-Based Testing?
@@ -110,6 +110,170 @@ Michael Gilliland (@mjgpy3) <br />
 # Enough with analogies, what is PBT?
 <img style="width: 90%" src="http://www.mahoneylandscaping.com/images/portfolio/big/Landscaping_March_2012_033.jpg">
 </img>
+
+---
+# Instead of
+
+## Given (arrange)
+> some state/setup
+
+## When (act)
+> some action
+
+## Then (assert)
+> some singular expectation
+
+---
+# ...we have...
+
+## Given (arrange)
+> some state/setup
+
+## When (act)
+> some action
+
+## Then (assert)
+> **some higher-level property**
+
+---
+# ...or even just
+
+## When (act)
+> some action
+
+## Then (assert)
+> **some higher-level property**
+
+---
+# How do we express properties?
+<img src="https://next3-assets.s3.amazonaws.com/activities/175/backgrounds-1423861398-Proportion_Activity_03.gif">
+</img>
+
+---
+# Predicate functions
+
+```javascript
+function examplePred(a, b, c, etc) {
+  return Boolean;
+}
+```
+
+---
+# Examples
+
+```javascript
+function isEven(n) {
+  return n % 2 === 0;
+}
+```
+
+---
+# Examples
+
+```javascript
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+console.log(isEven(42));
+// true
+```
+
+---
+# Examples
+
+```javascript
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+console.log(isEven(42));
+// true
+
+console.log(isEven(35));
+// false
+```
+
+---
+# Examples
+
+```javascript
+function is21OrOlder(person) {
+  return person.age >= 21;
+}
+```
+
+---
+# Examples
+
+```javascript
+function is21OrOlder(person) {
+  return person.age >= 21;
+}
+
+var littleStevie = {
+  age: 7
+};
+```
+
+---
+# Examples
+
+```javascript
+function is21OrOlder(person) {
+  return person.age >= 21;
+}
+
+var littleStevie = {
+  age: 7
+};
+
+console.log(is21OrOlder(littleStevie));
+// false
+```
+
+---
+# Examples
+
+```javascript
+function is21OrOlder(person) {
+  return person.age >= 21;
+}
+
+var littleStevie = {
+  age: 7
+};
+
+console.log(is21OrOlder(littleStevie));
+// false
+
+var marshall = {
+  age: 43
+};
+```
+
+---
+# Examples
+
+```javascript
+function is21OrOlder(person) {
+  return person.age >= 21;
+}
+
+var littleStevie = {
+  age: 7
+};
+
+console.log(is21OrOlder(littleStevie));
+// false
+
+var marshall = {
+  age: 43
+};
+
+console.log(is21OrOlder(marshall));
+// true
+```
 
 
 
