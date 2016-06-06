@@ -240,6 +240,9 @@ Oleg Grenrus (@phadej)
 ### Influenced by
 QuickCheck
 
+### Available in
+TODO: Fillin
+
 ---
 # Primary feature: generators
 
@@ -282,3 +285,129 @@ QuickCheck
 ---
 # PBT is mostly the same across tools
 <img style="width: 100%;" src="http://www.thequotepedia.com/images/09/always-remember-youre-unique-just-like-everyone-else-ego-quote.jpg"></img>
+
+---
+# 2 Examples
+<img style="width: 70%;" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Lego-all-combinations-of-two_bricks.jpg"></img>
+
+---
+# Example 1: Absolute value
+
+```javascript
+function abs(n) {
+  if (n < 0) {
+    return -n;
+  }
+
+  return n;
+}
+```
+
+---
+# How we _might_ unit test it
+
+```javascript
+  assertThat(abs(42) === 42)
+```
+
+```javascript
+  assertThat(abs(-35) === 35)
+```
+
+```javascript
+  assertThat(abs(0) === 0)
+```
+
+---
+# Or better
+
+```javascript
+[
+  0, 1, 24, 42, 99, 100
+].forEach(function (n) {
+
+  assertThat(abs(n) === n)
+
+});
+
+[
+  -12, -72, -92, -89, -100
+].forEach(function (n) {
+
+  assertThat(abs(n) === -n)
+
+});
+```
+
+---
+# Let's translate those to PBT
+
+```javascript
+var jsc = require('jsverify');
+
+jsc.assert(
+  jsc.forall('nat', function (n) {
+    return abs(n) === n;
+  })
+);
+
+jsc.assert(
+  jsc.forall('nat', function (n) {
+    return abs(-n) === n;
+  })
+);
+```
+
+---
+# More general properties: _always positive_
+
+```javascript
+var abs_is_always_positive =
+
+  jsc.forall('number', function (n) {
+    return abs(n) >= 0;
+  });
+
+jsc.assert(abs_is_always_positive);
+```
+
+---
+# More general properties: _idempotent_
+
+```javascript
+var abs_is_idempotent =
+
+  jsc.forall('number', function (n) {
+    return abs(abs(n)) === abs(n);
+  });
+
+jsc.assert(abs_is_idempotent)
+```
+
+---
+# Example 2: Callback fun
+
+```javascript
+function ifPersonLike(value, personlikeCallback, otherwiseCallback) {
+  if (value.name && value.age && value.age >= 0 && value.address) {
+    return personlikeCallback(value);
+  }
+
+  return otherwiseCallback(value);
+}
+```
+
+---
+# Happy-path test
+
+```javascript
+var ifpersonlike_invokes_the_first_callback_given_a_person =
+
+  jsc.forall('', function (n) {
+    return abs(abs(n)) === abs(n);
+  });
+
+jsc.assert(
+  abs_is_idempotent
+);
+```
