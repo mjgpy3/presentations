@@ -385,29 +385,4 @@ jsc.assert(abs_is_idempotent)
 ```
 
 ---
-# Example 2: Callback fun
-
-```javascript
-function ifPersonLike(value, personlikeCallback, otherwiseCallback) {
-  if (value.name && value.age && value.age >= 0 && value.address) {
-    return personlikeCallback(value);
-  }
-
-  return otherwiseCallback(value);
-}
-```
-
----
-# Happy-path test
-
-```javascript
-var ifpersonlike_invokes_the_first_callback_given_a_person =
-
-  jsc.forall('', function (n) {
-    return abs(abs(n)) === abs(n);
-  });
-
-jsc.assert(
-  abs_is_idempotent
-);
-```
+# Example 2: TODO
