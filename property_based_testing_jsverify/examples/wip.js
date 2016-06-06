@@ -8,13 +8,13 @@ function abs(n) {
   return n;
 }
 
-jsc.check(
+jsc.assert(
   jsc.forall("nat", function (n) {
     return abs(n) === n;
   })
 );
 
-jsc.check(
+jsc.assert(
   jsc.forall("nat", function (n) {
     return abs(-n) === n;
   })
@@ -39,36 +39,86 @@ jsc.assert(
   abs_is_idempotent
 );
 
-function isPersonLike(value, personlikeCallback, otherwiseCallback) {
-  if (value.name && value.age && value.age >= 0 && value.address) {
-    return personlikeCallback(value);
+function fizzbuzz(n, divBy3, divBy5, divBy15, otherwise) {
+  if (n%15 === 0) {
+    return divBy15(n);
   }
 
-  return otherwiseCallback(value);
+  if (n%3 === 0) {
+    return divBy3(n);
+  }
+
+  if (n%5 === 0) {
+    return divBy5(n);
+  }
+
+  return otherwise(n);
 }
 
-var validPerson = jsc.record({
-  name: jsc.string,
-  age: jsc.nat,
-  address: jsc.string
+/*
+for (var i = 1; i < 101; i += 1) {
+  fizzbuzz(
+    i,
+    function () { console.log('Fizz'); },
+    function () { console.log('Buzz'); },
+    function () { console.log('FizzBuzz'); },
+    function (n) { console.log(n); }
+  )
+}
+*/
+
+var divisibleBy15 = jsc.nat.generator.map(
+  function (n) { return n * 15; }
+);
+
+var divisibleBy15 = jsc.bless({
+  generator: function () {
+    return jsc.random(0, 999999999) * 15;
+  }
 });
 
-var examplePersonCallback = jsc.fn(validPerson, jsc.nat);
-var exampleOtherwiseCallback = jsc.fn(jsc.nat);
-
-var ifpersonlike_invokes_the_first_callback_given_a_person =
-
-  jsc.forall(
-    validPerson,
-    examplePersonCallback,
-    exampleOtherwiseCallback
-    , function (v, f, g) {
-    console.log(v);
-    console.log('f(v)', f(v));
-    console.log('ifPersonLike(v, f, g)', ifPersonLike(v, f, g));
-    return ifPersonLike(v, f, g) === f(v);
-  });
+function any() {
+  throw new Error('An ignored function was called!');
+}
 
 jsc.assert(
-  ifpersonlike_invokes_the_first_callback_given_a_person
+  jsc.forall(divisibleBy15, 'nat -> json', function (n, cb) {
+    return fizzbuzz(n, any, any, cb, any) === cb(n);
+  })
+);
+
+var divisibleBy3Not5 = jsc.bless({
+  generator: function () {
+    var result = jsc.random(0, 999999999) * 3;
+
+    if (result % 5 == 0) {
+      return result + 3;
+    }
+
+    return result;
+  }
+});
+
+jsc.assert(
+  jsc.forall(divisibleBy3Not5, 'nat -> json', function (n, cb) {
+    return fizzbuzz(n, cb, any, any, any) === cb(n);
+  })
+);
+
+var notDivisibleBy3Or5 = jsc.bless({
+  generator: function () {
+    var result = jsc.random(0, 999999999);
+
+    while (result % 5 === 0 || result % 3 === 0) {
+      result += 1;
+    }
+
+    return result;
+  }
+});
+
+jsc.assert(
+  jsc.forall(notDivisibleBy3Or5, 'nat -> json', function (n, cb) {
+    return fizzbuzz(n, any, any, any, cb) === cb(n);
+  })
 );

@@ -385,4 +385,124 @@ jsc.assert(abs_is_idempotent)
 ```
 
 ---
-# Example 2: TODO
+# Example 2: FizzBuzz callback hell
+
+```javascript
+function fizzbuzz(n, divBy3, divBy5, divBy15, otherwise) {
+  if (n%15 === 0) {
+    return divBy15(n);
+  }
+
+  if (n%3 === 0) {
+    return divBy3(n);
+  }
+
+  if (n%5 === 0) {
+    return divBy5(n);
+  }
+
+  return otherwise(n);
+}
+```
+
+---
+# So, the "actual" FizzBuzz solution looks like
+
+```javascript
+for (var n = 1; n < 101; n += 1) {
+  fizzbuzz(
+    n,
+    function () { console.log('Fizz'); },
+    function () { console.log('Buzz'); },
+    function () { console.log('FizzBuzz'); },
+    function (n) { console.log(n); }
+  )
+}
+```
+
+---
+# Custom generator for divisible by 15
+
+```javascript
+var divisibleBy15 = jsc.bless({
+  generator: function () {
+    return jsc.random(0, 999999999) * 15;
+  }
+});
+```
+
+---
+# Showing the property holds
+
+```javascript
+function any() {
+  throw new Error('An ignored function was called!');
+}
+
+jsc.assert(
+  jsc.forall(divisibleBy15, 'nat -> json', function (n, cb) {
+    return fizzbuzz(n, any, any, cb, any) === cb(n);
+  })
+);
+```
+
+---
+# Divisible by 3 (and not 5) is a little tougher
+
+```javascript
+var divisibleBy3Not5 = jsc.bless({
+  generator: function () {
+    var result = jsc.random(0, 999999999) * 3;
+
+    if (result % 5 === 0) {
+      return result + 3;
+    }
+
+    return result;
+  }
+});
+```
+
+---
+# The property is shown like before
+
+```javascript
+jsc.assert(
+  jsc.forall(divisibleBy3Not5, 'nat -> json', function (n, cb) {
+    return fizzbuzz(n, cb, any, any, any) === cb(n);
+  })
+);
+```
+
+---
+# Divisible by 5 is basically the same thing
+
+<img style="width: 70%;" src="http://static.fjcdn.com/pictures/Southpark_5db603_184365.jpg"></img>
+
+---
+# Last but not least...
+
+```javascript
+var notDivisibleBy3Or5 = jsc.bless({
+  generator: function () {
+    var result = jsc.random(0, 999999999);
+
+    while (result % 5 === 0 || result % 3 === 0) {
+      result += 1;
+    }
+
+    return result;
+  }
+});
+```
+
+---
+# Final property
+
+```javascript
+jsc.assert(
+  jsc.forall(notDivisibleBy3Or5, 'nat -> json', function (n, cb) {
+    return fizzbuzz(n, any, any, any, cb) === cb(n);
+  })
+);
+```
