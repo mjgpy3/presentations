@@ -8,7 +8,7 @@ Michael Gilliland (@mjgpy3) <br />
  - Enter JSVerify
  - Examples
  - When to use it?
- - When to not use it?
+ - When not to use it?
 
 ---
 # What is Property-Based Testing?
@@ -240,8 +240,9 @@ Oleg Grenrus (@phadej)
 ### Influenced by
 QuickCheck
 
-### Available in
-TODO: Fillin
+### Integrates well with
+ - jasmine
+ - mocha
 
 ---
 # Primary feature: generators
@@ -503,6 +504,48 @@ var notDivisibleBy3Or5 = jsc.bless({
 jsc.assert(
   jsc.forall(notDivisibleBy3Or5, 'nat -> json', function (n, cb) {
     return fizzbuzz(n, any, any, any, cb) === cb(n);
+  })
+);
+```
+---
+# When to use it?
+<img style="width: 70%;" src="https://usimetro.files.wordpress.com/2014/04/hammer-and-nail-e1397074407161.jpg"></img>
+
+---
+# When you're unit testing
+<img style="width: 90%;" src="http://martinfowler.com/bliki/images/testPyramid/pyramid.png"></img>
+
+---
+# When you need _some_ type guarantees
+<img style="width: 80%;" src="http://joelabrahamsson.com/PageFiles/148/1310_1644.jpg"></img>
+
+---
+# When you need lots of test data
+<img style="width: 80%;" src="http://www.hersheyarchives.org/files/essay/2B126.4.jpg"></img>
+
+---
+# When not to use it?
+<img style="width: 80%;" src="https://www.yesleasing.com/wp-content/uploads/2016/02/square-peg-round-hole.jpg"></img>
+
+---
+# When you're afraid of randomness
+<img style="width: 90%;" src="http://keithburgun.net/wp-content/uploads/2014/10/dice.jpg"></img>
+
+---
+# When you don't need that level of rigor
+<img style="width: 90%;" src="http://homegrownfriends.com/wp-content/uploads/2015/03/DSC_00621.jpg"></img>
+
+---
+# When your system lacks functions/methods
+<img style="width: 100%;" src="https://i.ytimg.com/vi/mseQKkC8x-o/maxresdefault.jpg"></img>
+
+---
+# Questions?
+
+```javascript
+jsc.assert(
+  jsc.forall('array personWithQuestions', function (person) {
+    return shouldAsk(person.questions);
   })
 );
 ```
