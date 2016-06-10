@@ -13,7 +13,7 @@ Michael Gilliland (@mjgpy3) <br />
 ---
 # What is Property-Based Testing?
 
-<img src="http://cdn.theleanleap.com/wp-content/uploads/2015/02/blind-men-elephant-600x440.gif">
+<img src="static/images/blind_elephant.gif">
 </img>
 
 ---
@@ -24,80 +24,80 @@ Michael Gilliland (@mjgpy3) <br />
 ---
 # "Normal" testing is sniper-rifle testing
 
-<img src="http://listamaze.com/wp-content/uploads/2015/06/M21.jpeg?8fa78d">
+<img src="static/images/sniper.jpeg">
 </img>
 
 ---
 # Our testing is deliberate
-<img style="width: 60%" src="http://www.mccambridge.org/blog/wp-content/uploads/2010/03/IMG_2488.jpg">
+<img style="width: 60%" src="static/images/hit_target.jpg">
 </img>
 
 ---
 # Sometimes we flat-out miss
-<img style="width: 90%" src="http://2.bp.blogspot.com/-vcufGRGQvtk/UPTH-ynAkAI/AAAAAAAAMHc/ur9kh5KnBVI/s1600/Pulp+Fiction+(1994)+720p%5B17-17-24%5D.jpg">
+<img style="width: 90%" src="static/images/miss.jpg">
 </img>
 
 ---
 # Property-based testing is shot-gun testing
-<img src="http://i.telegraph.co.uk/multimedia/archive/02442/shotgun_2442821b.jpg">
+<img src="static/images/shotgun.jpg">
 </img>
 
 ---
 # Our testing is _still_ deliberate
-<img width="90%" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Shotgun_in_training_US_military.jpg">
+<img width="90%" src="static/images/steady_aim.jpg">
 </img>
 
 ---
 # Our coverage can be greater
-<img width="60%" src="http://www.b2bmarketingconsultants.com/wp-content/uploads/2013/09/target.jpg">
+<img width="60%" src="static/images/shotgun_target.jpg">
 </img>
 
 ---
 # But we can still miss!
-<img style="width: 90%" src="http://2.bp.blogspot.com/-vcufGRGQvtk/UPTH-ynAkAI/AAAAAAAAMHc/ur9kh5KnBVI/s1600/Pulp+Fiction+(1994)+720p%5B17-17-24%5D.jpg">
+<img style="width: 90%" src="static/images/miss.jpg">
 </img>
 
 ---
 # Enough with analogies, what is PBT?
-<img style="width: 90%" src="http://www.mahoneylandscaping.com/images/portfolio/big/Landscaping_March_2012_033.jpg">
+<img style="width: 90%" src="static/images/sidewalk.jpg">
 </img>
 
 ---
 # Instead of
 
-## Given (arrange)
+#### Given (arrange)
 > some state/setup
 
-## When (act)
+#### When (act)
 > some action
 
-## Then (assert)
+#### Then (assert)
 > some singular expectation
 
 ---
 # ...we have...
 
-## Given (arrange)
+#### Given (arrange)
 > some state/setup
 
-## When (act)
+#### When (act)
 > some action
 
-## Then (assert)
+#### Then (assert)
 > **some higher-level property**
 
 ---
 # ...or even just
 
-## When (act)
+#### When (act)
 > some action
 
-## Then (assert)
+#### Then (assert)
 > **some higher-level property**
 
 ---
 # How do we express properties?
-<img src="https://next3-assets.s3.amazonaws.com/activities/175/backgrounds-1423861398-Proportion_Activity_03.gif">
+<img src="static/images/proportion.gif">
 </img>
 
 ---
@@ -281,15 +281,15 @@ QuickCheck
 
 ---
 # This talk may be misnamed...
-<img style="width: 90%;" src="http://i2.kym-cdn.com/photos/images/original/000/692/118/2db.jpg"></img>
+<img style="width: 90%;" src="static/images/trap.jpg"></img>
 
 ---
 # PBT is mostly the same across tools
-<img style="width: 100%;" src="http://www.thequotepedia.com/images/09/always-remember-youre-unique-just-like-everyone-else-ego-quote.jpg"></img>
+<img style="width: 100%;" src="static/images/unique.jpg"></img>
 
 ---
 # 2 Examples
-<img style="width: 70%;" src="https://upload.wikimedia.org/wikipedia/commons/8/84/Lego-all-combinations-of-two_bricks.jpg"></img>
+<img style="width: 70%;" src="static/images/lego_combinations.jpg"></img>
 
 ---
 # Example 1: Absolute value
@@ -478,7 +478,7 @@ jsc.assert(
 ---
 # Divisible by 5 is basically the same thing
 
-<img style="width: 70%;" src="http://static.fjcdn.com/pictures/Southpark_5db603_184365.jpg"></img>
+<img style="width: 70%;" src="static/images/barbrady.jpg"></img>
 
 ---
 # Last but not least...
@@ -509,35 +509,35 @@ jsc.assert(
 ```
 ---
 # When to use it?
-<img style="width: 70%;" src="https://usimetro.files.wordpress.com/2014/04/hammer-and-nail-e1397074407161.jpg"></img>
+<img style="width: 70%;" src="static/images/hammer.jpg"></img>
 
 ---
 # When you're unit testing
-<img style="width: 90%;" src="http://martinfowler.com/bliki/images/testPyramid/pyramid.png"></img>
+<img style="width: 90%;" src="static/images/pyramid.png"></img>
 
 ---
 # When you need _some_ type guarantees
-<img style="width: 80%;" src="http://joelabrahamsson.com/PageFiles/148/1310_1644.jpg"></img>
+<img style="width: 80%;" src="static/images/types.jpg"></img>
 
 ---
 # When you need lots of test data
-<img style="width: 80%;" src="http://www.hersheyarchives.org/files/essay/2B126.4.jpg"></img>
+<img style="width: 80%;" src="static/images/belt.jpg"></img>
 
 ---
 # When not to use it?
-<img style="width: 80%;" src="https://www.yesleasing.com/wp-content/uploads/2016/02/square-peg-round-hole.jpg"></img>
+<img style="width: 80%;" src="static/images/square_peg.jpg"></img>
 
 ---
 # When you're afraid of randomness
-<img style="width: 90%;" src="http://keithburgun.net/wp-content/uploads/2014/10/dice.jpg"></img>
+<img style="width: 90%;" src="static/images/dice.jpg"></img>
 
 ---
 # When you don't need that level of rigor
-<img style="width: 90%;" src="http://homegrownfriends.com/wp-content/uploads/2015/03/DSC_00621.jpg"></img>
+<img style="width: 90%;" src="static/images/fingerpaint.jpg"></img>
 
 ---
 # When your system lacks functions/methods
-<img style="width: 100%;" src="https://i.ytimg.com/vi/mseQKkC8x-o/maxresdefault.jpg"></img>
+<img style="width: 100%;" src="static/images/junction.jpg"></img>
 
 ---
 # Questions?
