@@ -77,6 +77,3 @@ Are you tired of all those nasty production bugs? Are you sick of reading others
 The step is this: don’t write any code.
 
 This may seem ridiculous (and in all honesty it probably is) but let’s explore some ways to make it, at least, closer to being a reality in our professional lives.
-
-### Bio
-A functional programming enthusiast who loves collaboratively solving hard problems, building cool things, testing and music.
