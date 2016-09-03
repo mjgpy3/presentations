@@ -1,8 +1,8 @@
-describe('incrementCounts()', () => {
+describe('getCounts()', () => {
   var subject;
 
   beforeEach(() => {
-    subject = require('../src/ex1SimpleLoops.js').incrementCounts;
+    subject = require('../src/ex1SimpleLoops.js').getCounts;
   });
 
   describe('given an empty array', () => {
@@ -18,8 +18,8 @@ describe('incrementCounts()', () => {
   });
 
   describe('given an array with counts of 0', () => {
-    it('returns counts of 1', () => {
-      expect(subject([{ counts: 0 }])).toEqual([{ counts: 1 }]);
+    it('returns 0', () => {
+      expect(subject([{ counts: 0 }])).toEqual([0]);
     });
   });
 
@@ -31,10 +31,10 @@ describe('incrementCounts()', () => {
       { counts: 41 }
     ];
 
-    it('returns just those counts with each incremented', () => {
+    it('returns just those counts', () => {
       expect(subject(array)).toEqual([
-        { counts: 100 },
-        { counts: 42 }
+        99,
+        41
       ]);
     });
   });

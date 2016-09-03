@@ -1,15 +1,13 @@
-function incrementCounts(input) {
+function getCounts(input) {
   var results = [];
 
   for (var i = 0; i < input.length; i++) {
     if ('counts' in input[i]) {
-      results.push(
-        { counts: input[i].counts + 1 }
-      );
+      results.push(input[i].counts);
     }
   }
 
   return results;
 }
 
-module.exports.incrementCounts = incrementCounts;
+module.exports.getCounts = getCounts;
