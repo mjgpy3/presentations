@@ -26,6 +26,18 @@ describe('errorToStatusCode()', () => {
     });
   });
 
+  describe('given a string containing the phrase "not found" with some strange casing', () => {
+    it('returns a 404', () => {
+      expect(subject('The foo you requested was NoT FOUnd.')).toBe(404);
+    });
+  });
+
+  describe('given some error string', () => {
+    it('returns a 5000', () => {
+      expect(subject('hmmm')).toBe(500);
+    });
+  });
+
   describe('given a validation error', () => {
     it('returns a 400', () => {
       expect(subject(new ValidationError('The foo you provided was not valid'))).toBe(400);

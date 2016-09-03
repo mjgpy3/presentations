@@ -1,5 +1,3 @@
-const R = require('ramda');
-
 function errorToStatusCode(error) {
   if (error && error.constructor) {
 
