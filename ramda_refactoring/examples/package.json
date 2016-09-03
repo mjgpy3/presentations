@@ -1,0 +1,17 @@
+{
+  "name": "ramda-refactoring-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=./spec/support/jasmine.json"
+  },
+  "author": "Michael Gilliland <mjg.py3@gmail.com> (https://twitter.com/mjgpy3)",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "2.4.1"
+  },
+  "dependencies": {
+    "ramda": "^0.22.1"
+  }
+}
