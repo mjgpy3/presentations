@@ -1,13 +1,13 @@
-function getCounts(input) {
+function getViews(youtubeVideos) {
   var results = [];
 
-  for (var i = 0; i < input.length; i++) {
-    if ('counts' in input[i]) {
-      results.push(input[i].counts);
+  for (var i = 0; i < youtubeVideos.length; i++) {
+    if ('views' in youtubeVideos[i]) {
+      results.push(youtubeVideos[i].views);
     }
   }
 
   return results;
 }
 
-module.exports.getCounts = getCounts;
+module.exports.getViews = getViews;
