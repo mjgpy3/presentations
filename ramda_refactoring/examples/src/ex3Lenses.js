@@ -19,6 +19,10 @@ function addSpeciesMetadata(pokemon, metadata) {
   return newPokemon;
 }
 
+function getSpecies(pokemon) {
+  return pokemon.species.name;
+}
+
 function shallowClone(pokemon) {
   var result = {};
 
@@ -27,10 +31,6 @@ function shallowClone(pokemon) {
   }
 
   return result;
-}
-
-function getSpecies(pokemon) {
-  return pokemon.species.name;
 }
 
 module.exports = {
