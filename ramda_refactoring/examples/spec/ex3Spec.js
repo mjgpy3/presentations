@@ -14,7 +14,7 @@ describe('example: pokemon', () => {
       beforeEach(() => {
         originalPokemon = getPokemon();
 
-        subject = subject(originalPokemon, 'foobar');
+        subject = subject('foobar', originalPokemon);
       });
 
       it('sets the new species name on the returned value', () => {
@@ -56,7 +56,7 @@ describe('example: pokemon', () => {
     beforeEach(() => {
       originalPokemon = getPokemon();
 
-      subject = fn(originalPokemon, { foo: 'bar', spaz: 'eggs' });
+      subject = fn({ foo: 'bar', spaz: 'eggs' }, originalPokemon);
     });
 
     it('keeps the original pokemon species name', () => {
@@ -82,7 +82,7 @@ describe('example: pokemon', () => {
       var firstResult;
       beforeEach(() => {
         firstResult = subject;
-        subject = fn(originalPokemon, { a: 'b', c: 'd' });
+        subject = fn({ a: 'b', c: 'd' }, subject);
       });
 
       it('does not modify the first result', () => {
