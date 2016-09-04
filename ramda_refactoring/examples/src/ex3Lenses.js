@@ -1,7 +1,10 @@
 function setSpecies(species, pokemon) {
   var newPokemon = shallowClone(pokemon);
+  var newSpecies = shallowClone(pokemon.species);
 
-  newPokemon.species = { name:  species };
+  newSpecies.name = species;
+
+  newPokemon.species = newSpecies;
 
   return newPokemon;
 }
