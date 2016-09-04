@@ -8,6 +8,9 @@ function setSpecies(pokemon, species) {
 
 function addSpeciesMetadata(pokemon, metadata) {
   var newPokemon = shallowClone(pokemon);
+  var newSpecies = shallowClone(newPokemon.species);
+
+  newPokemon.species = newSpecies;
 
   for (var metadataKey in metadata) {
     newPokemon.species[metadataKey] = metadata[metadataKey];

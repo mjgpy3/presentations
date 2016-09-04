@@ -46,16 +46,17 @@ describe('example: pokemon', () => {
   });
 
   describe('addSpeciesMetadata()', () => {
-    var originalPokemon;
+    var originalPokemon,
+      fn;
 
     beforeEach(() => {
-      subject = require('../src/ex3Lenses.js').addSpeciesMetadata;
+      fn = require('../src/ex3Lenses.js').addSpeciesMetadata;
     });
 
     beforeEach(() => {
       originalPokemon = getPokemon();
 
-      subject = subject(originalPokemon, { foo: 'bar', spaz: 'eggs' });
+      subject = fn(originalPokemon, { foo: 'bar', spaz: 'eggs' });
     });
 
     it('keeps the original pokemon species name', () => {
@@ -75,6 +76,31 @@ describe('example: pokemon', () => {
 
     it('does not mutate the original, passed pokemon', () => {
       expect(originalPokemon.species.name).toBe('bulbasaur');
+    });
+
+    describe('when even more metadata is attached', () => {
+      var firstResult;
+      beforeEach(() => {
+        firstResult = subject;
+        subject = fn(originalPokemon, { a: 'b', c: 'd' });
+      });
+
+      it('does not modify the first result', () => {
+        expect(firstResult.species.a).not.toBeDefined();
+      });
+
+      it('keeps the original keys', () => {
+        expect(firstResult.species.name).toBe('bulbasaur');
+      });
+
+      it('keeps the metadata keys added on the first call', () => {
+        expect(firstResult.species.foo).toBe('bar');
+      });
+
+      it('associates the new data into the pokemon species object', () => {
+        expect(subject.species.a).toBe('b');
+        expect(subject.species.c).toBe('d');
+      });
     });
   });
 });
